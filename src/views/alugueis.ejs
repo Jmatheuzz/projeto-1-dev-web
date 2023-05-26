@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Express - Basic Auth</title>
+    </head>
+    <body>
+
+        <h1>Alugueis</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>Modelo</td>
+                    <td>Cor</td>
+                    <td>Valor</td>
+                    <td>Valor diária</td>
+                    <td>Começa em</td>
+                    <td>Diárias</td>
+                    <td>Valor total</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < rents.length; i++) {%>
+                   <tr>
+                        <td>
+                            <%= rents[i].car._id %> 
+                        </td>
+                        <td>
+                            <%= rents[i].car.name %> 
+                        </td>
+                        <td>
+                            <%= rents[i].car.mark %> 
+                        </td>
+                        <td>
+                            <%= rents[i].car.color %> 
+                        </td>
+                        <td>
+                            <%= rents[i].car.value %> 
+                        </td>
+                        <td>
+                            <%= rents[i].car.dialyValue%> 
+                        </td>
+                        <td>
+                            <%= rents[i].startAt%> 
+                        </td>
+                        <td>
+                            <%= (new Date(rents[i].endAt).getTime() - new Date(rents[i].startAt).getTime()) / 86400000 %> 
+                        </td>
+                        <td>
+                            <%= rents[i].all%> 
+                        </td>
+                   </tr> 
+                <% } %> 
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Express - Basic Auth</title>
+    </head>
+    <style>
+        boy-dy {
+            display: flex;
+            justify-content: center;
+        }
+        .app {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .btn {
+            width: 250px;
+            height: 70px;
+            background-color: blue;
+            border: 0;
+            justify-content: center;
+        }
+        input {
+            width: 50vw;
+            height: 50px;
+            border: none;
+        
+        }
+        .div{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <body>
+        <div class="app">
+            <div>
+                <h1>Alugar</h1>
+    
+            <span>
+                <%= car.name %> 
+            </span>
+            <br/>
+            <span>
+                <%= car.mark %> 
+            </span>
+            <br/>
+            <span>
+                <%= car.color %> 
+            </span>
+            <br/>
+            <span>
+                <%= car.value %> 
+            </span>
+            <br/>
+            <span>
+                <%= car.dialyValue %> 
+            </span>
+            <br/>
+            </div>
+            <form action="/loja/alugar" method="POST">
+                <input type="hidden"  name="id" value="`<%= car._id %>`">
+                <input type="hidden"  name="color" value="`<%= car.color %>`">
+                <input type="hidden" class="value-day" name="dialyValue" value="`<%= car.dialyValue %>`">
+                <input type="hidden" name="value" value="`<%= car.value %>`">
+                <input type="hidden"  name="name" value="`<%= car.name %>`">
+                <input type="hidden"  name="mark" value="`<%= car.mark %>`">
+                <input type="hidden" class="allValue" name="all">
+                Data inicial: <input type="date" class="start" name="startAt"/><br/>
+                Data final: <input type="date" class="end" name="endAt"/><br/>
+                Forma de pagamento: <input type="text"name="pag"/><br/>
+                <div class="all"></div>
+                <div class="div">
+                    <button type="submit" value="Alugar">Confirmar reserva</button>
+                </div>
+            </form>
+        </div> 
+        
+    </body>
+
+    <script>
+        const startAtEl = document.querySelector('.start')
+        const endsEL = document.querySelector('.end')
+        const all = document.querySelector('.all')
+        const valueDay = document.querySelector('.value-day')
+
+        endsEL.addEventListener("change", (e) => {
+            if(startAtEl.value !== ''){
+                const startValue = startAtEl.value
+                if (new Date(endsEL.value).getTime() > new Date(startValue).getTime()){
+                    console.log(startAtEl.value)
+                    const days = Math.floor((new Date(endsEL.value).getTime() - new Date(startValue).getTime()) / 86400000) 
+                    const sla = days * parseFloat(valueDay.value.replaceAll('`', ''))
+                    document.querySelector('.allValue').value = sla
+                    console.log(parseFloat(valueDay.value.replaceAll('`', '')))
+                }else {
+                    all.innerHTML = 'Data de inicio tem que ser menor que a de fim'
+                }
+           }
+        })
+
+        startAtEl.addEventListener("change", (e) => {
+            if(endsEL.value){
+               const startValue = startAtEl.value
+                if (new Date(endsEL.value).getTime() > new Date(startValue).getTime()){
+                    const days = Math.floor((new Date(endsEL.value).getTime() - new Date(startValue).getTime()) / 86400000) 
+                    const sla = days * parseFloat(valueDay.value.replaceAll('`', ''))
+                    document.querySelector('.allValue').value = sla
+                    console.log(sla)
+
+                }else {
+                    all.innerHTML = 'Data de inicio tem que ser menor que a de fim'
+                }
+           }
+        })
+    </script>
+</html>

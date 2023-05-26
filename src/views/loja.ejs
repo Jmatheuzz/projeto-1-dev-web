@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Express - Basic Auth</title>
+    </head>
+    <style>
+        .carro {
+            width: 20%;
+            height: 20%;
+            background-color: rgb(255, 166, 0);
+        }
+    </style>
+    <body>
+
+        <h1>Carros</h1>
+
+        <div class="carros">
+            <% for (let i = 0; i < cars.length; i++) {%>
+                <div class="carro">
+                     <h3>
+                        Nome: <%= cars[i].name %> 
+                     </h3>
+                     <span>
+                        Marca: <%= cars[i].mark %> 
+                     </span>
+                     <span>
+                        Cor: <%= cars[i].color %> 
+                     </span>
+                     <span>
+                         Valor: <%= cars[i].value %> 
+                     </span>
+                     <h3>
+                         Preço da diária: <%= cars[i].dialyValue%> 
+                     </h3>
+                     <a href="<%=`/loja/alugar?id=${cars[i]._id}`%>">Alugar</a>
+                </div> 
+             <% } %> 
+        </div>
+
+    </body>
+</html>

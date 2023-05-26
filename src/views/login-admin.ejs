@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Express - Basic Auth</title>
+    </head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .btn {
+            width: 250px;
+            height: 70px;
+            background-color: blue;
+            border: 0;
+            justify-content: center;
+        }
+        input {
+            width: 50vw;
+            height: 50px;
+            border: none;
+        
+        }
+        div{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <body>
+
+        <form action="/admin-login" method="POST">
+            Email: <input type="email" name="email"/><br/>
+            Senha: <input type="password" name="password"/><br/>
+            <div>
+                <input class="btn" type="submit" value="Entrar"/>
+            </div>
+        </form> 
+    </body>
+</html>

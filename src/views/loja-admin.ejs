@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Express - Basic Auth</title>
+    </head>
+    <style>
+        table {
+            width: 90vw;
+            margin-top: 50px;
+        }
+        td {
+            width: 10%;
+        }
+        .btn {
+            width: 250px;
+            height: 70px;
+            background-color: blue;
+            border: 0;
+            justify-content: center;
+            text-decoration: none;
+        }
+    </style>
+    <body>
+
+        <a class="btn" href="/admin/loja/add-carro">New Product</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>Modelo</td>
+                    <td>Cor</td>
+                    <td>Valor</td>
+                    <td>Valor diária</td>
+                    <td>Apagar</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < cars.length; i++) {%>
+                   <tr>
+                        <td>
+                            <%= cars[i]._id %> 
+                        </td>
+                        <td>
+                            <%= cars[i].name %> 
+                        </td>
+                        <td>
+                            <%= cars[i].mark %> 
+                        </td>
+                        <td>
+                            <%= cars[i].color %> 
+                        </td>
+                        <td>
+                            <%= cars[i].value %> 
+                        </td>
+                        <td>
+                            <%= cars[i].dialyValue%> 
+                        </td>
+                        <td>
+                            <a href="<%= `/admin/loja/delete-carro?id=${cars[i]._id}` %>">x</a>
+                        </td>
+                   </tr> 
+                <% } %> 
+            </tbody>
+        </table>
+    </body>
+</html>

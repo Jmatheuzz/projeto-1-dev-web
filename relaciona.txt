@@ -1,0 +1,2 @@
+carro(id, nome, marca, cor, valor, diaria)
+aluguel(id, inicio, fim, id_carro, id_user)
